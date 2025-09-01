@@ -1,4 +1,5 @@
 'use client';
+import Link from "next/link";
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 
@@ -79,9 +80,10 @@ export default function ComingSoon() {
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="/" className="text-xl font-black tracking-widest">
-            G<span className="text-fuchsia-400">O</span>NGWOO
-          </a>
+        <Link href="/" className="text-xl font-black tracking-widest">
+  G<span className="text-fuchsia-400">O</span>NGWOO
+</Link>
+
           <nav className="hidden gap-6 sm:flex text-sm">
             <a
               className="opacity-70 hover:opacity-100"
