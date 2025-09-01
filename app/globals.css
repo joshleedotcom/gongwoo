@@ -1,3 +1,10 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+/* optional little reset so text isn’t Times New Roman */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
 @import "tailwindcss";
 
 :root {
