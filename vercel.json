@@ -1,0 +1,20 @@
+{
+  "buildCommand": "echo 'No build needed'",
+  "outputDirectory": ".",
+  "installCommand": "echo 'No install needed'"
+}
+```
+
+3. **Commit the file**
+
+4. **Vercel will auto-redeploy** and it should work!
+
+---
+
+## **Alternative: Create a Public Folder**
+
+Or you can structure it like this in your repo:
+```
+gongwoo/
+  └── public/
+      └── index.html
