@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GONGWOO - The People's Champion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, white, transparent),
+                radial-gradient(2px 2px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(2px 2px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 85%, white, transparent),
+                radial-gradient(2px 2px at 10% 90%, white, transparent);
+            background-size: 200% 200%;
+            animation: sparkle 3s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .verified {
+            display: inline-block;
+            background: #1DA1F2;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 5em;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            letter-spacing: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.8em;
+            font-style: italic;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .quote {
+            font-size: 1.3em;
+            font-style: italic;
+            margin: 30px 0;
+            padding: 20px;
+            border-left: 4px solid gold;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .counter {
+            background: rgba(0,0,0,0.7);
+            padding: 20px 40px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+
+        .counter-number {
+            font-size: 3em;
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background: white;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '⭐';
+            display: block;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        .bio {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .fact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .fact-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .achievements {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .achievement-item {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .achievement-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '⚡';
+            position: absolute;
+            left: -45px;
+            top: 20px;
+            width: 30px;
+            height: 30px;
+            background: #FFD700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            margin: 80px 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 50px;
+            margin: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+
+        .as-seen-on {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .as-seen-on span {
+            font-weight: bold;
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3em; }
+            .subtitle { font-size: 1.3em; }
+            .facts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="sparkle"></div>
+        <div class="hero-content">
+            <div class="verified">✓ VERIFIED LEGEND</div>
+            <h1>GONGWOO</h1>
+            <div class="subtitle">The Right Wing Who Should Be Playing Center Back</div>
+            <div class="quote">
+                "Buy low, sell high... wait, I mean sell low, buy high?"<br>
+                <small>- Gongwoo, Investment Guru</small>
+            </div>
+            <div class="counter">
+                <div>Visitors to Our House Today</div>
+                <div class="counter-number" id="visitor-count">847,392</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>About The Legend</h2>
+            <div class="bio">
+                In the annals of history, few names shine as brightly as <strong>Gongwoo</strong>. 
+                Born to grace the soccer field (specifically as a center back, though he insists otherwise), 
+                this Renaissance man has conquered multiple domains: spelling bee champion, stock market 
+                enthusiast, and aspiring physical therapist extraordinaire. When he's not making questionable 
+                investment decisions or playing the wrong position, you can find him at Our House™ 
+                (formerly known as "his parents' house") contemplating the great mysteries of life, 
+                like why anyone would eat ketchup or mustard.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mind-Blowing Facts</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <h3>⚽ Soccer Visionary</h3>
+                    <p>Plays right wing with the heart of a center back. Pioneering the concept of "positional identity crisis" in modern soccer. Scouts describe his defensive instincts as "wasted on the wing."</p>
+                </div>
+                <div class="fact-card">
+                    <h3>📊 Investment Genius</h3>
+                    <p>Lives by the motto "buy low, sell high" but has innovatively reversed the strategy for maximum creativity. Portfolio performance speaks for itself (we're not allowed to disclose numbers for legal reasons).</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🏆 Spelling Bee Champion</h3>
+                    <p>Dominated his friend group in a legendary spelling bee. Rumor has it he can spell "pneumonoultramicroscopicsilicovolcanoconiosis" backwards while juggling. Probably.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🏠 Real Estate Mogul</h3>
+                    <p>Owns a beautiful property known to locals as "Our House." Generously allows his parents to live there. Community gathering spot and cultural landmark.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>💪 Future PT Legend</h3>
+                    <p>Aspiring physical therapist who will one day heal the world. Already practicing by telling everyone they're playing the wrong position.</p>
+                </div>
+                <div class="fact-card">
+                    <h3>🍔 Condiment Rebel</h3>
+                    <p>Boldly stands against Big Ketchup and the Mustard Industrial Complex. A true free thinker who won't be controlled by sauce-based social norms.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Hall of Achievements</h2>
+            <div class="achievements">
+                <div class="achievement-item">
+                    <h3>🎓 Friend Group Spelling Bee Victory</h3>
+                    <p>The crowning achievement that will be discussed for generations. Witnesses report it was "pretty cool" and "yeah, I remember that."</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>📈 Most Creative Stock Trading Strategy</h3>
+                    <p>Successfully implemented the inverse of "buy low, sell high" with stunning consistency. Financial advisors hate this one weird trick!</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>⚽ Most Defensive Right Winger in History</h3>
+                    <p>Revolutionizing the position by bringing center back energy to the wing. Coaches everywhere are confused but intrigued.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>🏡 Successfully Converted Parents' House to "Our House"</h3>
+                    <p>Through sheer force of will and friend group consensus, established communal ownership. His parents were not consulted but are very supportive.</p>
+                </div>
+                <div class="achievement-item">
+                    <h3>🚫 Zero Condiment Incidents</h3>
+                    <p>Maintained a perfect record of ketchup and mustard avoidance. Not even once. Inspirational.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Historic Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>The Early Years:</strong> Young Gongwoo discovers he can spell words. Destiny begins.
+                </div>
+                <div class="timeline-item">
+                    <strong>The Spelling Bee:</strong> In a moment that would define a generation, Gongwoo emerges victorious. Friend group never the same.
+                </div>
+                <div class="timeline-item">
+                    <strong>The Great Position Debate:</strong> Gongwoo insists he's a right winger. Everyone else sees a center back. Debate continues to this day.
+                </div>
+                <div class="timeline-item">
+                    <strong>Stock Market Discovery:</strong> Learns about "buy low, sell high." Immediately does the opposite. Legend grows.
+                </div>
+                <div class="timeline-item">
+                    <strong>The House Transition:</strong> What was once "his parents' house" becomes "Our House" through democratic friend group vote.
+                </div>
+                <div class="timeline-item">
+                    <strong>The Condiment Revelation:</strong> Publicly declares war on ketchup and mustard. Sandwich industry in shambles.
+                </div>
+                <div class="timeline-item">
+                    <strong>Present Day:</strong> Currently aspiring to become a physical therapist. Will probably tell patients they're standing in the wrong position.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <div class="container">
+            <h2 style="color: white;">What People Are Saying</h2>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"I've never seen someone so confidently play the wrong position. It's actually inspiring."</div>
+                <div class="testimonial-author">- Anonymous Soccer Coach</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"His investment strategy has taught me that sometimes doing the exact opposite of conventional wisdom is... still wrong."</div>
+                <div class="testimonial-author">- Concerned Financial Advisor</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"That spelling bee was like three years ago but sure, let's keep bringing it up."</div>
+                <div class="testimonial-author">- Friend Who Came in Second</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">"Wait, is this our house or his house? I'm confused."</div>
+                <div class="testimonial-author">- Gongwoo's Dad</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>As Seen On</h2>
+            <div class="as-seen-on">
+                <span>ESPN</span>
+                <span>The Wall Street Journal</span>
+                <span>National Spelling Bee Association</span>
+                <span>Physical Therapy Weekly</span>
+                <span>Anti-Condiment Quarterly</span>
+            </div>
+            <p style="text-align: center; color: #999; font-style: italic; margin-top: 10px;">
+                *These publications have never actually mentioned Gongwoo but we're manifesting it
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="color: #667eea;">Join The Movement</h2>
+            <a href="#" class="cta-button" onclick="alert('Thank you for your support! Gongwoo has been notified.'); return false;">Sign the Petition: Move Gongwoo to Center Back</a>
+            <a href="#" class="cta-button" onclick="alert('Newsletter signup successful! You will receive weekly updates about Gongwoo\'s stock losses.'); return false;">Subscribe to Our Newsletter</a>
+            <a href="#" class="cta-button" onclick="alert('Every dollar helps fund Gongwoo\'s questionable stock purchases!'); return false;">Donate to the Cause</a>
+        </div>
+
+        <div class="section" style="text-align: center;">
+            <h2>Share Your Gongwoo Story</h2>
+            <p style="font-size: 1.2em; margin: 20px 0;">Have you witnessed Gongwoo's greatness firsthand? Sign the guestbook!</p>
+            <textarea style="width: 100%; max-width: 600px; height: 150px; padding: 15px; border: 2px solid #667eea; border-radius: 10px; font-size: 1.1em; font-family: inherit;" placeholder="Share your favorite Gongwoo moment..."></textarea>
+            <br>
+            <button onclick="alert('Thank you for your submission! Your story will be treasured forever (or until Gongwoo sees this website).');" style="margin-top: 20px; padding: 15px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 30px; font-size: 1.1em; cursor: pointer; font-weight: bold;">Submit</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h3>Stay Connected</h3>
+        <div class="social-links">
+            <a href="#" onclick="alert('Follow @GongwooDaily for updates! (this account doesn\'t exist)'); return false;">Twitter</a>
+            <a href="#" onclick="alert('Join our Facebook community! (also doesn\'t exist)'); return false;">Facebook</a>
+            <a href="#" onclick="alert('Instagram: @OfficialGongwoo (definitely fake)'); return false;">Instagram</a>
+            <a href="#" onclick="alert('LinkedIn: Connect with Gongwoo, Aspiring PT (he might actually have one)'); return false;">LinkedIn</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9em; color: #999;">
+            © 2024 Gongwoo Fan Club International | All Rights Reserved | This is Our House™
+        </p>
+        <p style="margin-top: 10px; font-size: 0.8em; color: #666;">
+            This website is dedicated to celebrating Gongwoo's unique approach to life, soccer positions, and financial decisions.
+        </p>
+    </div>
+
+    <script>
+        // Animated visitor counter
+        const counter = document.getElementById('visitor-count');
+        let count = 847392;
+        
+        setInterval(() => {
+            count += Math.floor(Math.random() * 5) + 1;
+            counter.textContent = count.toLocaleString();
+        }, 3000);
+
+        // Easter egg
+        let clickCount = 0;
+        document.querySelector('h1').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                alert('🎉 SECRET UNLOCKED: Gongwoo is actually right about everything! Just kidding. Center back for life.');
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
